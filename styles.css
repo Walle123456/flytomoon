@@ -1317,23 +1317,25 @@ h2 {
 
 /* 视频容器样式 */
 .intro-video-container {
+    position: relative;
     width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    overflow: hidden;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding-top: 56.25%; /* 16:9 宽高比 */
+    background: #000; /* 改为纯黑色背景，与播放器控制栏颜色一致 */
     border-radius: 12px;
-    position: relative;  /* 添加相对定位 */
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
-#intro-video {
+.intro-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    display: block;
-    filter: 
-        brightness(1.1)     /* 稍微提高亮度 */
-        contrast(1.05)      /* 轻微提高对比度 */
-        saturate(1.1)       /* 稍微提高饱和度 */
-        hue-rotate(0deg);   /* 保持原色调 */
+    height: 100%;
+    border: none;
+    border-radius: 12px;
 }
 
 /* 视频播放按钮 */
@@ -1420,4 +1422,12 @@ h2 {
     border-left: 6px solid rgba(255, 255, 255, 0.9);   /* 调整暂停条的宽度 */
     border-right: 6px solid rgba(255, 255, 255, 0.9);  /* 调整暂停条的宽度 */
     margin: 0 auto;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .intro-video-container {
+        margin: 1rem auto;
+        max-width: 100%;
+    }
 }
